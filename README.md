@@ -18,3 +18,10 @@ This project is built with **Django** and can be deployed on platforms like **Re
 
 ## Project Structure
 
+DJANGO/
+├─ blog/           ← Your main app
+├─ django_blog/    ← Project folder with settings.py and wsgi.py
+├─ venv/           ← Virtual environment (ignored on GitHub)
+├─ requirements.txt
+├─ .gitignore
+├─ mi_base.db      ← Local SQLite database (ignored on GitHub)
