@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-xi237%6^!w#4ovh!#&=4-s(ou1=2(oypeu6fa$9s87v#_)2(+^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("RENDER") != "1"
 
 ALLOWED_HOSTS = ['nincy-blog.onrender.com', '127.0.0.1', 'localhost']
 
@@ -83,13 +83,14 @@ if os.getenv("RENDER") != "1":
             'NAME': BASE_DIR / "mi_base.db",
         }
     }
-# FOR RENDER
 else:
     DATABASES = {
-        'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+        'default': dj_database_url.config(
+            default=os.environ.get("DATABASE_URL"),
+            conn_max_age=600,
+            ssl_require=True
+        )
     }
-
-
 
 
 # Password validation
