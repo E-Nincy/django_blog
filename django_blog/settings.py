@@ -86,7 +86,7 @@ if os.getenv("RENDER") != "1":
 # En Render usamos Postgres
 else:
     DATABASES = {
-        'default': dj_database_url.config(default=os.environ['postgresql://nincy_blog_db_user:qpcvSXIzfGWaXrOuX7jWZmNAHRHTSq9L@dpg-d2ql2qmmcj7s73capa80-a/nincy_blog_db'])
+        'default': dj_database_url.config(default=os.environ.get('postgresql://nincy_blog_db_user:qpcvSXIzfGWaXrOuX7jWZmNAHRHTSq9L@dpg-d2ql2qmmcj7s73capa80-a/nincy_blog_db'))
     }
 
 
