@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-xi237%6^!w#4ovh!#&=4-s(ou1=2(oypeu6fa$9s87v#_)2(+^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1", "localhost", "nincy-blog.onrender.com']
+ALLOWED_HOSTS = ['nincy-blog.onrender.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
