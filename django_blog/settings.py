@@ -76,16 +76,17 @@ WSGI_APPLICATION = 'django_blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-if os.getenv('RENDER') == '1':
-    DATABASES = {
-        'default': dj_database_url.config(default=os.environ['DATABASE_URL'])
-    }
-else:
+if os.getenv("RENDER") != "1":
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / "db.sqlite3",
+            'NAME': BASE_DIR / "mi_base.db",
         }
+    }
+# En Render usamos Postgres
+else:
+    DATABASES = {
+        'default': dj_database_url.config(default=os.environ['postgresql://nincy_blog_db_user:qpcvSXIzfGWaXrOuX7jWZmNAHRHTSq9L@dpg-d2ql2qmmcj7s73capa80-a/nincy_blog_db'])
     }
 
 
