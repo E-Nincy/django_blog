@@ -83,11 +83,12 @@ if os.getenv("RENDER") != "1":
             'NAME': BASE_DIR / "mi_base.db",
         }
     }
-# En Render usamos Postgres
+# FOR RENDER
 else:
     DATABASES = {
-        'default': dj_database_url.config(default=os.environ.get('postgresql://nincy_blog_db_user:qpcvSXIzfGWaXrOuX7jWZmNAHRHTSq9L@dpg-d2ql2qmmcj7s73capa80-a/nincy_blog_db'))
+        'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
     }
+
 
 
 
