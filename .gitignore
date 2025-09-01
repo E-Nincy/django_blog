@@ -1,0 +1,31 @@
+# Entorno virtual
+venv/
+
+# Bases de datos locales
+mi_base.db
+db_sqlite/
+db.sqlite3
+
+# Archivos compilados de Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Django
+*.log
+/staticfiles/
+media/
+*.sqlite3
+
+# IDEs
+.vscode/
+.idea/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Pipenv (si quieres ignorar)
+Pipfile.lock
+

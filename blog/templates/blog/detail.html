@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ post.title }} - Nincy's Blog{% endblock title %}
+
+{% block content %}
+    <h2>{{ post.title }}</h2>
+    <p class="text-muted">{{ post.published }}</p>
+    <hr>
+    <p>{{ post.text }}</p>
+    <a href="{% url 'blog:index' %}" class="btn btn-secondary mt-3">Back to Home</a>
+{% endblock content %}
+

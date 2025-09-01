@@ -1,0 +1,49 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="row">
+        {% for post in posts %}
+            <div class="col-md-4">
+                <div class="card m-2">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text text-muted small">{{ post.published }}</p>
+                        <p class="card-text">{{ post.text|truncatechars:50 }}</p>
+                        <a href="{% url 'blog:detail' post.id %}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No posts available.</p>
+        {% endfor %}
+    </div>
+
+    <!-- Paginación -->
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination">
+            {% if posts.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ posts.previous_page_number }}">Previous</a>
+                </li>
+            {% endif %}
+
+            {% for num in posts.paginator.page_range %}
+                {% if posts.number == num %}
+                    <li class="page-item active">
+                        <span class="page-link">{{ num }}</span>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if posts.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ posts.next_page_number }}">Next</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock content %}
