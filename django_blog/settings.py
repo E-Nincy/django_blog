@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-default-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("RENDER") != "1"
+DEBUG = False
 
 ALLOWED_HOSTS = ['nincy-blog.onrender.com', '127.0.0.1', 'localhost']
 
@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'django_blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-load_dotenv()  # carga las variables del .env
+load_dotenv()
 
 DATABASES = {
     'default': {
@@ -86,6 +86,7 @@ DATABASES = {
         'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_HOST'),
         'PORT': os.getenv('DB_PORT'),
+        'OPTIONS': {'sslmode': 'require'} if os.getenv('DB_HOST') != 'localhost' else {},
     }
 }
 
