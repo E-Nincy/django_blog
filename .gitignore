@@ -5,6 +5,7 @@ venv/
 mi_base.db
 db_sqlite/
 db.sqlite3
+.env
 
 # Archivos compilados de Python
 *.pyc
