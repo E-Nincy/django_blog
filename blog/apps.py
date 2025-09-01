@@ -1,18 +1,24 @@
+# blog/apps.py
 from django.apps import AppConfig
-from django.core.management import call_command
 import os
+import json
+from django.core.management import call_command
+from django.db.utils import OperationalError
 
 class BlogConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'blog'
 
     def ready(self):
-        if os.getenv("RENDER") == "1":  # Solo en Render
+        if os.getenv("RENDER") == "1":
+            from django.db import connections
             try:
-                from .models import Post
-                if Post.objects.count() == 0:
-                    call_command("loaddata", "blog_data.json")
-            except Exception:
-                pass
+                c = connections['default'].cursor()
+                return
+            except OperationalError:
+                json_file = os.path.join(os.path.dirname(__file__), "blog_data.json")
+                if os.path.exists(json_file):
+                    call_command("loaddata", json_file)
+
 
 
