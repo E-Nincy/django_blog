@@ -6,6 +6,7 @@ mi_base.db
 db_sqlite/
 db.sqlite3
 .env
+dump.sql
 
 # Archivos compilados de Python
 *.pyc
