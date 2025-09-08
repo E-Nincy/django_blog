@@ -27,7 +27,9 @@ SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-default-key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['20.8.26.51']
+ALLOWED_HOSTS = ['20.8.26.51', 'nincy-blog.onrender.com']
+
+CSRF_TRUSTED_ORIGINS = ["https://nincy-blog.onrender.com"]
 
 
 # Application definition
