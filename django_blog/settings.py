@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #my apps
     'blog',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -58,8 +59,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+STATICFILES_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+AZURE_ACCOUNT_NAME = os.getenv("AZURE_ACCOUNT_NAME")
+AZURE_ACCOUNT_KEY = os.getenv("AZURE_ACCOUNT_KEY")
+AZURE_CONTAINER = os.getenv("AZURE_CONTAINER")
+STATIC_URL = f'https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}/'
 
 ROOT_URLCONF = 'django_blog.urls'
 
