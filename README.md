@@ -20,7 +20,7 @@ This project is built with **Django** and can be deployed on platforms like **Re
 
 DJANGO/
 
-├─ blog/           ← Your main app
+├─ blog/           ← Main app
 
 ├─ django_blog/    ← Project folder with settings.py and wsgi.py
 
